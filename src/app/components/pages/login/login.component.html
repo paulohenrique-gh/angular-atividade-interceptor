@@ -1,4 +1,6 @@
-<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+<h1>Login</h1>
+
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
   <div>
     <label for="username">Username</label>
     <input type="text" name="username" id="username" [(ngModel)]="user.username" required />
@@ -7,5 +9,5 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password" [(ngModel)]="user.password" required />
   </div>
-  <button type="submit" [disabled]="userForm.invalid">Login</button>
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
 </form>
