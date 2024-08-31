@@ -23,10 +23,8 @@ export class LoginComponent {
   onSubmit(): void {
     this.authService.login(this.user).subscribe(
       {
-        next: (res) => {
-          localStorage.setItem("api_token", res.token);
+        next: () => {
           this.router.navigate(['home']);
-          console.log('logged in')
         },
         error: () => alert("Invalid user or password")
       }
