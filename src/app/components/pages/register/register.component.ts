@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,9 @@ export class RegisterComponent implements OnInit {
 
   roles: string[] = [];
 
-  constructor( private formBuilder: FormBuilder, private authService: AuthService
+  errorMessage: string = '';
+
+  constructor( private formBuilder: FormBuilder, private authService: AuthService, private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +54,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     console.log('register submitted');
-    this.authService.register(this.registrationForm.value)
+    this.authService.register(this.registrationForm.value).subscribe({
+      next: () => this.router.navigate(['login']),
+      error: (error) => {
+        this.errorMessage = 'Something went wrong';
+        console.error(error);
+      }
+    });
   }
 }
