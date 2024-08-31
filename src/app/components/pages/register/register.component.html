@@ -3,15 +3,15 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username" id="username" [formControl]="usernameControl" required />
+    <input type="text" name="username" id="username" [formControl]="usernameControl" />
   </div>
   <div>
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" [formControl]="passwordControl" required />
+    <input type="password" name="password" id="password" [formControl]="passwordControl" />
   </div>
   <div>
     <label for="role">Role</label>
-    <select name="role" id="role" [formControl]="roleControl" required>
+    <select name="role" id="role" [formControl]="roleControl">
       <option value="">Select a role</option>
       <option *ngFor="let role of roles" [value]="role">{{ role | titlecase }}</option>
     </select>
