@@ -23,7 +23,7 @@ export class UserService {
           throw error;
         })
       ).subscribe({
-        error: (error) => console.log(error);
+        error: (error) => console.log(error)
       })
   }
 
