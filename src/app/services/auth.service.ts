@@ -4,9 +4,7 @@ import { UserLogin } from '../models/user-login';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { TokenResponse } from '../models/token-response';
 import { UserRegistration } from '../models/user-registration';
-import { RegistrationResponse } from '../models/registration-response';
-import { LoggedInUser } from '../models/logged-in-user';
-import { UserService } from './user.service';
+import { GenericResponse } from '../models/generic-response';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +22,6 @@ export class AuthService {
   login(user: UserLogin): Observable<TokenResponse> {
     return this.httpClient.post<TokenResponse>(`${this.url}login`, user).pipe(
       tap((res: TokenResponse) => {
-        console.log('na autenticação', res);
         localStorage.setItem("token", res.token);
         return res;
       }),
@@ -34,7 +31,14 @@ export class AuthService {
     );
   }
 
-  register(user: UserRegistration): Observable<RegistrationResponse> {
-    return this.httpClient.post<RegistrationResponse>(`${this.url}register`, user);
+  register(user: UserRegistration): Observable<GenericResponse> {
+    return this.httpClient.post<GenericResponse>(`${this.url}register`, user);
+  }
+
+  logout(): void {
+    this.httpClient.post<GenericResponse>(`${this.url}logout`, {}).subscribe({
+      error: (error) => console.log(error)
+    });
+    localStorage.removeItem('token');
   }
 }
