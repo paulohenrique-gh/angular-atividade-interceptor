@@ -11,14 +11,15 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
+  host: {'class': 'form-container'}
 })
 export class RegisterComponent implements OnInit {
   usernameControl!: FormControl;
@@ -53,12 +54,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('register submitted');
     this.authService.register(this.registrationForm.value).subscribe({
       next: () => this.router.navigate(['login']),
-      error: (error) => {
+      error: (e) => {
         this.errorMessage = 'Something went wrong';
-        console.error(error);
+        alert(e.error.message);
       }
     });
   }
