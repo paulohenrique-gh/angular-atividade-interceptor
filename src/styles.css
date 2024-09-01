@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #222222;
+  color: #daa520;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container {
+  background-color: #131313;
+  width: 500px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 8px;
+}
+
+.form-container h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+}
+
+.form-control input,
+.form-control select {
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.form-footer {
+  text-align: center;
+}
+
+button:disabled {
+  background-color: #d1c9b6;
+  color: #838383;
+  cursor: not-allowed;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #cfb269;
+  color: #131313;
+  border-radius: 8px;
+  border: transparent;
+  font-size: 16px;
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #d1c9b6;
+}
