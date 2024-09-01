@@ -1,20 +1,19 @@
 <h1>Register</h1>
 
 <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" [formControl]="usernameControl" />
+  <div class="form-control">
+    <input type="text" name="username" id="username" [formControl]="usernameControl" placeholder="Username"/>
   </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" [formControl]="passwordControl" />
+  <div class="form-control">
+    <input type="password" name="password" id="password" [formControl]="passwordControl" placeholder="Password" />
   </div>
-  <div>
-    <label for="role">Role</label>
-    <select name="role" id="role" [formControl]="roleControl">
+  <div class="form-control">
+    <select name="role" id="role" [formControl]="roleControl" class="form-select">
       <option value="">Select a role</option>
       <option *ngFor="let role of roles" [value]="role">{{ role | titlecase }}</option>
     </select>
   </div>
   <button type="submit" [disabled]="registrationForm.invalid">Register</button>
 </form>
+
+<p class="form-footer">Already have an account? <a routerLink="../login">Log in</a></p>
